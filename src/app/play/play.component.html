@@ -1,0 +1,24 @@
+<div class="container">
+    <h2>Play the Game</h2>
+    <form (ngSubmit)="submitNumbers()">
+      <div class="form-group">
+        <label for="numbers">Enter your numbers (comma-separated):</label>
+        <input type="text" class="form-control" id="numbers" [(ngModel)]="numbersInput" name="numbers" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+  <div *ngIf="ticket">
+    <h3>Ticket Information</h3>
+    <p>Hash: {{ticket.hash}}</p>
+    <p>Draw Date: {{ticket.drawDate}}</p>
+    <p>Numbers: {{ticket.numbersFromUser.join(', ')}}</p>
+  </div>
+  <div *ngIf="message">
+    <p *ngIf="message === 'SUCCESS'" class="alert alert-success">{{ message }}</p>
+    <ng-container *ngIf="message !== 'SUCCESS'">
+      <p class="alert alert-danger">{{ message }}</p>
+    </ng-container>
+  </div>
+  
+  

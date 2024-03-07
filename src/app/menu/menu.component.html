@@ -1,0 +1,18 @@
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div><a class="navbar-brand" href="https://www.szymonkornik.com">
+            Szykor</a></div>
+
+        <ul class="navbar-nav">
+            <li><a *ngIf="authService.isLoggedIn()" routerLink="/main" class="nav-link">Home</a></li>
+            <li><a *ngIf="authService.isLoggedIn()" routerLink="/play" class="nav-link">Play</a></li>
+            <li><a *ngIf="authService.isLoggedIn()" routerLink="/results" class="nav-link">Results</a></li>
+        </ul>
+
+        <ul class="navbar-nav navbar-collapse justify-content-end">
+            <li><a *ngIf="!authService.isLoggedIn()" routerLink="/login" class="nav-link">Login</a></li>
+            <li><a *ngIf="!authService.isLoggedIn()" routerLink="/register" class="nav-link">Register</a></li>
+            <li (click)="authService.logout()"><a *ngIf="authService.isLoggedIn()" routerLink="/login" class="nav-link">Logout</a></li>
+        </ul>
+    </nav>
+</header>

@@ -1,0 +1,21 @@
+<h1>Welcome</h1>
+
+<div class="container alert alert-danger" *ngIf="errorMessage">{{errorMessage}}</div>
+
+<div class="container">
+    You can play in our lottery <a routerLink="/play">here</a>
+</div>
+
+<div class="container">
+    You can check results <a routerLink="/results">here</a>
+</div>
+
+<!-- <div class="container">
+    Click button for customized message 
+    <button (click)="getMessageWithName()" class="btn btn-success">Get message</button>
+</div> -->
+
+<!-- <div class="container" *ngIf="welcomeMessageFromService">
+    <h2>Your customized welcome message</h2>
+    {{welcomeMessageFromService}}
+</div> -->
