@@ -12,15 +12,14 @@ import { CommonModule } from '@angular/common';
 })
 
 export class PlayComponent {
-  numbersInput: string = ''; // User input as a string
-  ticket: any; // To store the ticketDto from the response
-  message: string = ''; // To store the success/failure message
+  numbers: number[] = Array(6).fill(null); 
+  ticket: any;
+  message: string = ''; 
 
   constructor(private gameService: GameService) { }
 
   submitNumbers(): void {
-    const numbers = this.numbersInput.split(',').map(num => parseInt(num.trim(), 10)); 
-    this.gameService.inputNumbers(numbers).subscribe(
+    this.gameService.inputNumbers(this.numbers).subscribe(
       response => {
         this.ticket = response.ticketDto;
         this.message = response.message;
@@ -30,5 +29,20 @@ export class PlayComponent {
         this.message = 'Failed to submit numbers. Please try again.';
       }
     );
+  }
+
+  generateRandomNumbers(): void {
+    let generatedNumbers: number[] = [];
+    while (generatedNumbers.length < 6) {
+      let num = Math.floor(Math.random() * 99) + 1;
+      if (!generatedNumbers.includes(num)) {
+        generatedNumbers.push(num);
+      }
+    }
+    this.numbers = generatedNumbers;
+  }
+
+  trackByIndex(index: number, item: any): number {
+    return index;
   }
 }

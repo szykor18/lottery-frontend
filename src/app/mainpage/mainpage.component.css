@@ -1,0 +1,31 @@
+.bg-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* background-image: url('path/to/your/background-image.jpg'); Update with your image path */
+    background-size: cover;
+    background-position: center;
+    opacity: 0.6;
+    z-index: -1; /* Ensure it stays behind other content */
+  }
+  
+  /* Ensure text contrasts well against the background for readability */
+  .container {
+    position: relative;
+    z-index: 2;
+    color: #000000; /* White text; adjust as needed based on your background */
+  }
+  
+  /* Enhancing the look of the lead text */
+  .lead {
+    font-size: 1.25rem;
+    color: #000000; /* Lighter text; adjust as needed */
+  }
+  
+  /* Custom styling for buttons */
+  .btn-lg {
+    padding: .75rem 1.25rem;
+    font-size: 1.2rem;
+  }
