@@ -1,11 +1,11 @@
-FROM node:18.15.0-alpine as build
+FROM node:20.11.0-alpine as build
 WORKDIR /app
 COPY package.json package-lock.json /app/
 RUN npm install --silent
 COPY . /app
 RUN npm run build
 
-FROM nginx:1.23.4-alpine
+FROM nginx:1.25.3-alpine
 COPY --from=build /app/dist/* /usr/share/nginx/html/
 COPY nginx.conf /etc/nginx/nginx.conf
 EXPOSE 80
