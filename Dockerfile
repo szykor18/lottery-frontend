@@ -1,14 +1,10 @@
-
-FROM node:18.15.0-alpine as build
+FROM node:alpine AS builder
 WORKDIR /app
-ENV PATH /app/node_modules/.bin:$PATH
-COPY package.json /app/package.json
-RUN yarn config set unsafe-perm true
-RUN yarn install --silent
-COPY . /app
-RUN yarn run ng build --prod
+COPY . .
+RUN npm install && npm run build
 
-FROM nginx:1.23.4-alpine
+FROM nginx:alpine
+COPY --from=builder /app/dist/lottery /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/nginx.conf
-COPY --from=build /app/dist/lottery /usr/share/nginx/html
+EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
